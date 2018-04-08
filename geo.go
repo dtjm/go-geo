@@ -1,7 +1,6 @@
 package geo
 
 import (
-	// "errors"
 	"math"
 )
 
