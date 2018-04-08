@@ -68,14 +68,12 @@ func DistVincenty(startLat, startLon, endLat, endLon float64) float64 {
 	cos2SigmaM := 1.0
 	cosSigma := 1.0
 	sigma := 1.0
-	// deltaLambda := lambda - lambdaP
 
 	for ((math.Abs(lambda - lambdaP)) > math.Pow10(-12)) && (iterLimit > 0) {
 		sinLambda := math.Sin(lambda)
 		cosLambda := math.Cos(lambda)
 		sinSigma = math.Sqrt((cosU2*sinLambda)*(cosU2*sinLambda) + (cosU1*sinU2-sinU1*cosU2*cosLambda)*(cosU1*sinU2-sinU1*cosU2*cosLambda))
 		if sinSigma == 0 {
-			// return 0, nil // co-incident points
 			return 0.0
 		}
 		cosSigma = sinU1*sinU2 + cosU1*cosU2*cosLambda
@@ -89,12 +87,10 @@ func DistVincenty(startLat, startLon, endLat, endLon float64) float64 {
 		C := f / 16 * cosSqAlpha * (4 + f*(4-3*cosSqAlpha))
 		lambdaP = lambda
 		lambda = L + (1-C)*f*sinAlpha*(sigma+C*sinSigma*(cos2SigmaM+C*cosSigma*(-1+2*cos2SigmaM*cos2SigmaM)))
-		// deltaLambda = lambda - lambdaP
 		iterLimit = iterLimit - 1
 	}
 
 	if iterLimit == 0 {
-		//return -1.0, errors.New("formula failed to converge")
 		return -1.0
 	}
 
