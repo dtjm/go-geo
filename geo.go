@@ -50,10 +50,6 @@ func Round(val float64, roundOn float64, places int) (newVal float64) {
 // latitude/longitude using Vincenty inverse formula for ellipsoids
 // Returns result in metres
 func DistVincenty(startLat, startLon, endLat, endLon float64) float64 {
-	// startLat := startLatDeg * (math.Pi / 180)
-	// startLon := startLonDeg * (math.Pi / 180)
-	// endLat := endLatDeg * (math.Pi / 180)
-	// endLon := endLonDeg * (math.Pi / 180)
 	a := 6378137.0
 	b := 6356752.3142
 	f := 1 / 298.257223563 // WGS-84 ellipsiod
